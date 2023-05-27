@@ -19,7 +19,18 @@ const FeaturedRow = ({title, description}) => {
         showsHorizontalScrollIndicator={false}
         className='pt-4'>
             {/* resteraunt cards */}
-            <ResterauntCard/>
+            <ResterauntCard
+             id={123}
+             imgUrl="https://links.papareact.com/gn7"
+             title="Yo! Sushi"
+             rating={4.5}
+             genre='Japanese'
+             address="123 Main St"
+             short_description="this is a test description"
+             dishes={[]}
+             long={20}
+             lat={0}
+            />
         </ScrollView>
     </View>
   )

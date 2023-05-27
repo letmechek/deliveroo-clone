@@ -3,8 +3,9 @@ import React, { useLayoutEffect } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { UserIcon, ChevronDownIcon, MagnifyingGlassIcon, AdjustmentsHorizontalIcon } from 'react-native-heroicons/outline'
 import { TextInput } from 'react-native';
-import Categories from '../components/Categories';
+
 import FeaturedRow from '../components/FeaturedRow';
+import Categories from '../components/Catagories';
 
 
 
