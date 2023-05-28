@@ -2,15 +2,15 @@
 // import resteraunt from "./resteraunt"
 import dish from "./dish"
 import category from "./category"
-import feautured from "./feautured"
+import featured from "./featured"
 import resteraunt from "./resteraunt"
 
 
 export const schemaTypes = [ 
     resteraunt,
-    dish,
     category,
-    feautured
+    dish,
+    featured,
     ]
 
   
