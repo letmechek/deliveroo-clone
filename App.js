@@ -7,6 +7,8 @@ import HomeScreen from './screens/HomeScreen';
 
 
 
+
+
 const Stack = createNativeStackNavigator();
 
 
@@ -17,9 +19,9 @@ export default function App() {
     <Stack.Navigator>
       <Stack.Screen name="Home" component={HomeScreen} />
     </Stack.Navigator>
-  
     </TailwindProvider>
     </NavigationContainer>
   );
 }
+  
 

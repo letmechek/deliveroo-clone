@@ -1,9 +1,35 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import { View, Text, ScrollView } from 'react-native'
 import { ArrowRightIcon } from 'react-native-heroicons/outline'
 import ResterauntCard from './ResterauntCard'
+import sanityClient from "../sanity";
 
-const FeaturedRow = ({title, description}) => {
+const FeaturedRow = ({id ,title, description}) => {
+    const [resteraunts, setResteraunts] = useState([])
+
+    useEffect(() => {
+        sanityClient
+          .fetch(
+            `
+        *[_type == "featured" && _id == $id] {
+          ...,
+          resteraunts[]->{
+            ...,
+            dishes[] ->,
+            type-> {
+              name
+            }
+              },
+            }[0]
+        `,
+            { id }
+          )
+          .then((data) => {
+            setResteraunts(data.resteraunts);
+          });
+      }, [id]);
+    //   console.log(resteraunts)
+
   return (
     <View>
         <View className='mt-4 flex-row items-center justify-between px-4'>
@@ -19,42 +45,22 @@ const FeaturedRow = ({title, description}) => {
         showsHorizontalScrollIndicator={false}
         className='pt-4'>
             {/* resteraunt cards */}
-            <ResterauntCard
-             id={123}
-             imgUrl="https://links.papareact.com/gn7"
-             title="Yo! Sushi"
-             rating={4.5}
-             genre='Japanese'
-             address="123 Main St"
-             short_description="this is a test description"
-             dishes={[]}
-             long={20}
-             lat={0}
-            />
-            <ResterauntCard
-             id={123}
-             imgUrl="https://links.papareact.com/gn7"
-             title="Yo! Sushi"
-             rating={4.5}
-             genre='Japanese'
-             address="123 Main St"
-             short_description="this is a test description"
-             dishes={[]}
-             long={20}
-             lat={0}
-            />
-            <ResterauntCard
-             id={123}
-             imgUrl="https://links.papareact.com/gn7"
-             title="Yo! Sushi"
-             rating={4.5}
-             genre='Japanese'
-             address="123 Main St"
-             short_description="this is a test description"
-             dishes={[]}
-             long={20}
-             lat={0}
-            />
+            {resteraunts?.map((resteraunt) => (
+          <ResterauntCard
+            key={resteraunt._id}
+            id={resteraunt._id}
+            imgUrl={resteraunt.image}
+            title={resteraunt.name}
+            rating={resteraunt.rating}
+            genre={resteraunt.type?.name}
+            address={resteraunt.address}
+            short_description={resteraunt.short_description}
+            dishes={resteraunt.dishes}
+            long={resteraunt.long}
+            lat={resteraunt.lat}
+          />
+        ))}
+           
         </ScrollView>
     </View>
   )
