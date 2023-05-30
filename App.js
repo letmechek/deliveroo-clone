@@ -4,6 +4,8 @@ import { TailwindProvider } from 'tailwindcss-react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from './screens/HomeScreen';
+import ResterauntScreen from './screens/ResterauntScreen';
+ 
 
 
 
@@ -18,6 +20,7 @@ export default function App() {
     <TailwindProvider>
     <Stack.Navigator>
       <Stack.Screen name="Home" component={HomeScreen} />
+      <Stack.Screen name="Resteraunt" component={ResterauntScreen} />
     </Stack.Navigator>
     </TailwindProvider>
     </NavigationContainer>
