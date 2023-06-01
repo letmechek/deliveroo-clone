@@ -6,6 +6,7 @@ import { urlFor } from '../sanity'
 import { ArrowLeftIcon, StarIcon } from 'react-native-heroicons/solid'
 import {  ChevronRightIcon, MapPinIcon, QuestionMarkCircleIcon } from 'react-native-heroicons/outline'
 import DishRow from '../components/DishRow'
+import BasketIcon from '../components/BasketIcon'
 
 const ResterauntScreen = () => {
     const navigation = useNavigation()
@@ -35,6 +36,8 @@ const ResterauntScreen = () => {
         })
     }, [])
   return (
+    <>
+    <BasketIcon/>
     <ScrollView>
         <View>
             <Image
@@ -75,7 +78,7 @@ const ResterauntScreen = () => {
                 <ChevronRightIcon color='#00CCBB' />
             </TouchableOpacity>
             </View>
-            <View >
+            <View className='pb-36'>
                 <Text className='text-xl font-bold p-4'>Menu</Text>
                 {/* dishRows */}
 
@@ -93,6 +96,7 @@ const ResterauntScreen = () => {
             </View>
           </View>
     </ScrollView>
+    </>
   )
 }
 export default  ResterauntScreen
