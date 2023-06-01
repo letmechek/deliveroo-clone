@@ -18,5 +18,5 @@ This is a Deliveroo clone built using React Native, Redux, and Tailwind CSS. It 
 - Sanity CMS
 
 ## Screenshots
-![HomePage].(././assets/image1)
-![OrderPage].(././assets/image2)
+<img src="./assets/image1.png" alt="HomePage">
+<img src="./assets/image2.png" alt="OrderPage">
